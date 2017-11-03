@@ -31,11 +31,10 @@ public class MainActivity extends Activity implements CreateNdefMessageCallback 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView textView = (TextView) findViewById(R.id.textView);
+        TextView textView = (TextView) findViewById(R.id.textView);
         final EditText editText = (EditText) findViewById(R.id.message_box);
         final Button savey = (Button) findViewById(R.id.save);
 
-        ///////LOOK HERE ED////
         savey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 msg = editText.getText().toString();
@@ -99,8 +98,6 @@ public class MainActivity extends Activity implements CreateNdefMessageCallback 
         // only one message sent during the beam
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        editText.setVisibility(View.INVISIBLE);
-        savey.setVisibility(View.INVISIBLE);
         textView.setText(new String(msg.getRecords()[0].getPayload()));
     }
 }
